@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acessar Conta</title>
+    <link rel="icon" type="image" href="../FIREImgs/Fenixic.png">
+    <link rel="stylesheet" href="../EstiloFENIX/LoginReg.css">
+    <link rel="stylesheet" href="../EstiloFENIX/Essencial.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/751e327304.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <a href="Index.html">
+        <img src="../FIREImgs/Fenix.png" alt="Fenix Logo" width="100">
+        </a>
+        <nav>
+            <a class="Contact" href="Contact.html">Fale Conosco</a>
+            <a class="Register" href="Register.html">Registrar</a>
+            <a class="Entrar" href="Login.html">Entrar</a>
+        </nav>
+    </header>
+
+    <main class="auth-containerlg">
+        <div class="auth-card">
+            <div class="auth-header">
+                <div class="auth-icon">
+                    <i class="fas fa-sign-in-alt"></i>
+                </div>
+                <h1>Bem-vindo de Volta</h1>
+                <p class="auth-subtitle">Acesse sua conta para continuar sua jornada fitness</p>
+            </div>
+
+            <form class="auth-form" action="#" method="post">
+                <div class="form-group">
+                    <div class="input-with-icon">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="email" name="email" placeholder="Email ou nome de usuário" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="input-with-icon">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="password" name="password" placeholder="Sua senha" required>
+                        <button type="button" class="password-toggle">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                    <div class="form-options">
+                        <div class="checkbox-group remember">
+                            <input type="checkbox" id="remember" name="remember">
+                            <label for="remember">Lembrar de mim</label>
+                        </div>
+                        <a href="#" class="forgot-password">Esqueceu a senha?</a>
+                    </div>
+                </div>
+
+                <button class="submit-btn" type="submit" id="login">
+                    <span>Acessar Conta</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+
+                <div class="auth-divider">
+                    <span>Ou continue com</span>
+                </div>
+
+                <div class="social-login">
+                    <button type="button" class="social-btn google">
+                        <i class="fab fa-google"></i>
+                        <span>Google</span>
+                    </button>
+                    <button type="button" class="social-btn apple">
+                        <i class="fab fa-apple"></i>
+                        <span>Apple</span>
+                    </button>
+                </div>
+            </form>
+
+            <div class="auth-footer">
+                <p>Novo na FENIX? <a href="Register.html" class="auth-link">Crie sua conta</a></p>
+                <p class="auth-note">
+                    <i class="fas fa-bolt"></i>
+                    Acesso instantâneo aos seus treinos
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="fenix-footer">
+        <div class="footer-container">
+            <div class="footer-columns">
+                <div class="footer-column">
+                    <img src="../FIREImgs/Fenix.png" alt="Fenix Logo" width="150" style="margin-bottom: 20px;">
+                </div>
+                <div class="footer-column">
+                    <h3>Use cases</h3>
+                    <ul>
+                        <li><a href="#">UI design</a></li>
+                        <li><a href="#">UX design</a></li>
+                        <li><a href="#">Wireframing</a></li>
+                        <li><a href="#">Diagramming</a></li>
+                        <li><a href="#">Brainstorming</a></li>
+                        <li><a href="#">Online whiteboard</a></li>
+                        <li><a href="#">Team collaboration</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Explore</h3>
+                    <ul>
+                        <li><a href="#">Design</a></li>
+                        <li><a href="#">Prototyping</a></li>
+                        <li><a href="#">Development features</a></li>
+                        <li><a href="#">Design systems</a></li>
+                        <li><a href="#">Collaboration features</a></li>
+                        <li><a href="#">Design process</a></li>
+                        <li><a href="#">FigJam</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Best practices</a></li>
+                        <li><a href="#">Colors</a></li>
+                        <li><a href="#">Color wheel</a></li>
+                        <li><a href="#">Support</a></li>
+                        <li><a href="#">Developers</a></li>
+                        <li><a href="#">Resource library</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div>
+                    <div class="footer-logo">FENIX</div>
+                    <p class="copyright">© 2025 FENIX. Todos os direitos reservados.</p>
+                </div>
+                <div class="footer-social">
+                    <a href="https://www.instagram.com/feni.xtraining/" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../Scripts/auth.js"></script>
+    <script>
+        document.getElementById('login').addEventListener('click', function(e) {
+            e.preventDefault();
+            // Simulação de login bem-sucedido
+            setTimeout(() => {
+                window.location.href = 'Planos.html';
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
