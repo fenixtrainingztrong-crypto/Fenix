@@ -1,0 +1,30 @@
+FENIXTRAINING - VERCEL + SUPABASE
+
+ESTRUTURA
+- index.html, Login.html, Register.html, Planos.html, Treino.html, Contact.html
+- EstiloFENIX/  (CSS)
+- FIREImgs/     (imagens)
+- Scripts/      (JavaScript)
+- supabase-setup.sql (configuração inicial do banco)
+
+PUBLICAÇÃO NA VERCEL
+1. Extraia este ZIP.
+2. Envie o CONTEÚDO desta pasta para a raiz do repositório GitHub (não crie uma pasta FENIXHtmls).
+3. Na Vercel, configure Root Directory como ./ (raiz do repositório), Build Command vazio e Output Directory como .
+4. Publique novamente.
+
+SUPABASE
+1. No painel do Supabase, abra SQL Editor.
+2. Revise e execute supabase-setup.sql. Se já houver políticas ou dados existentes, confira-os antes.
+3. Em Authentication > URL Configuration, configure Site URL com o endereço público da Vercel.
+4. Teste o cadastro com uma conta nova e confirme o e-mail se solicitado.
+
+SEGURANÇA
+- supabase-auth.js usa a chave publishable/anon do frontend; nunca substitua por service_role.
+- Senhas são gerenciadas pelo Supabase Auth. A coluna clientes.password fica nullable para compatibilidade, mas não é usada pelo script.
+- O script de SQL cria um perfil por conta nova e políticas RLS básicas para clientes e treinos.
+- Contas existentes antes do gatilho não recebem perfil automaticamente; precisam de vínculo/migração individual.
+- Login aceita e-mail e senha, não nome de usuário.
+
+OBSERVAÇÃO
+A configuração do banco não pode ser executada automaticamente a partir deste arquivo: rode o SQL manualmente no painel Supabase.
