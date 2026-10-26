@@ -1,0 +1,406 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questionário | FenixTraining</title>
+    <link rel="icon" type="image/png" href="./FIREImgs/Fenixic.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+    <link rel="stylesheet" href="./EstiloFENIX/Essencial.css">
+    <link rel="stylesheet" href="./EstiloFENIX/Quest.css">
+    <script
+        src="https://kit.fontawesome.com/751e327304.js"
+        crossorigin="anonymous">
+    </script>
+</head>
+
+<body>
+
+    <!-- =====================================
+         HEADER
+    ====================================== -->
+
+    <header>
+        <a href="index.html" class="brand">
+            <img
+                src="./FIREImgs/Fenix.png"
+                alt="Fenix Logo"
+                width="100"
+            >
+        </a>
+
+        <nav>
+            <a class="Contact" href="Contact.html">
+                Fale Conosco
+            </a>
+
+            <a class="Register" href="Register.html">
+                Registrar
+            </a>
+
+            <a class="Entrar" href="Login.html">
+                Entrar
+            </a>
+        </nav>
+    </header>
+
+
+    <!-- =====================================
+         CONTEÚDO PRINCIPAL
+    ====================================== -->
+
+    <main class="questionnaire-main">
+
+        <section class="questionnaire-card">
+
+            <h1>Questionário</h1>
+
+            <form id="questionnaire-form">
+
+                <!-- GÊNERO -->
+
+                <fieldset class="gender-field">
+
+                    <legend>Gênero</legend>
+
+                    <div class="gender-options">
+
+                        <label class="gender-option">
+                            <input
+                                type="radio"
+                                name="genero"
+                                value="Masculino"
+                                required
+                            >
+
+                            <span>Masculino</span>
+                        </label>
+
+                        <label class="gender-option">
+                            <input
+                                type="radio"
+                                name="genero"
+                                value="Feminino"
+                                required
+                            >
+
+                            <span>Feminino</span>
+                        </label>
+
+                    </div>
+
+                </fieldset>
+
+
+                <!-- DIVISÓRIA -->
+
+                <div class="field-divider"></div>
+                <br>
+
+
+                <!-- DADOS PESSOAIS -->
+
+                <div class="personal-fields">
+
+                    <!-- ALTURA -->
+
+                    <div class="form-field">
+
+                        <label for="altura">
+                            Altura
+                        </label>
+
+                        <input
+                            type="number"
+                            id="altura"
+                            name="altura"
+                            placeholder="Ex.: 175 cm"
+                            min="50"
+                            max="250"
+                            step="0.1"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- PESO -->
+
+                    <div class="form-field">
+
+                        <label for="peso">
+                            Peso
+                        </label>
+
+                        <input
+                            type="number"
+                            id="peso"
+                            name="peso"
+                            placeholder="Ex.: 70 kg"
+                            min="20"
+                            max="350"
+                            step="0.1"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- DATA DE NASCIMENTO -->
+
+                    <div class="form-field birth-field">
+
+                        <label for="nascimento">
+                            Data de Nascimento
+                        </label>
+
+                        <input
+                            type="date"
+                            id="nascimento"
+                            name="nascimento"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- DIVISÓRIA -->
+
+                <div class="field-divider objective-divider"></div>
+
+
+                <!-- OBJETIVO -->
+
+                <div class="form-field objective-field">
+
+                    <label for="objetivo">
+                        Objetivo
+                    </label>
+
+                    <select
+                        id="objetivo"
+                        name="objetivo"
+                        required
+                    >
+
+                        <option value="" disabled selected>
+                            Selecione seu objetivo
+                        </option>
+
+                        <option value="Emagrecer">
+                            Emagrecer
+                        </option>
+
+                        <option value="Ganhar massa muscular">
+                            Ganhar massa muscular
+                        </option>
+
+                        <option value="Condicionamento físico">
+                            Condicionamento físico
+                        </option>
+
+                        <option value="Manter a saúde">
+                            Manter a saúde
+                        </option>
+
+                        <option value="Aumentar força">
+                            Aumentar força
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- MENSAGEM DE VALIDAÇÃO -->
+
+                <p
+                    id="form-message"
+                    class="form-message"
+                    role="status"
+                    aria-live="polite">
+                </p>
+
+
+                <!-- BOTÕES -->
+
+                <div class="form-actions">
+
+                    <button
+                        type="button"
+                        class="back-button"
+                        id="back-button">
+
+                        <i class="fa-solid fa-chevron-left"></i>
+
+                        <span>Voltar</span>
+
+                    </button>
+
+
+                    <button
+                        type="submit"
+                        class="next-button">
+
+                        <span>Seguir</span>
+
+                        <i class="fa-solid fa-chevron-right"></i>
+
+                    </button>
+
+                </div>
+
+            </form>
+
+        </section>
+
+    </main>
+
+
+    <!-- =====================================
+         FOOTER
+    ====================================== -->
+
+    <footer class="fenix-footer">
+
+        <div class="footer-container">
+
+            <div class="footer-columns">
+
+                <!-- LOGO -->
+
+                <div class="footer-column footer-brand">
+
+                    <a href="index.html">
+                        <img
+                            src="./FIREImgs/Fenix.png"
+                            alt="Fenix Logo"
+                            width="100"
+                        >
+                    </a>
+
+                </div>
+
+
+                <!-- REDES SOCIAIS -->
+
+                <div class="footer-column">
+
+                    <h3>Redes Sociais</h3>
+
+                    <div class="footer-social">
+
+                        <a
+                            href="https://www.instagram.com/feni.xtraining/"
+                            class="social-icon"
+                            aria-label="Instagram"
+                            target="_blank"
+                            rel="noopener noreferrer">
+
+                            <i class="fa-brands fa-instagram"></i>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- USE CASES -->
+
+                <div class="footer-column">
+
+                    <h3>Use cases</h3>
+
+                    <ul>
+                        <li><a href="#">UI design</a></li>
+                        <li><a href="#">UX design</a></li>
+                        <li><a href="#">Wireframing</a></li>
+                        <li><a href="#">Diagramming</a></li>
+                        <li><a href="#">Brainstorming</a></li>
+                        <li><a href="#">Online whiteboard</a></li>
+                        <li><a href="#">Team collaboration</a></li>
+                    </ul>
+
+                </div>
+
+
+                <!-- EXPLORE -->
+
+                <div class="footer-column">
+
+                    <h3>Explore</h3>
+
+                    <ul>
+                        <li><a href="#">Design</a></li>
+                        <li><a href="#">Prototyping</a></li>
+                        <li><a href="#">Development features</a></li>
+                        <li><a href="#">Design systems</a></li>
+                        <li><a href="#">Collaboration features</a></li>
+                        <li><a href="#">Design process</a></li>
+                        <li><a href="#">FigJam</a></li>
+                    </ul>
+
+                </div>
+
+
+                <!-- RESOURCES -->
+
+                <div class="footer-column">
+
+                    <h3>Resources</h3>
+
+                    <ul>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Best practices</a></li>
+                        <li><a href="#">Colors</a></li>
+                        <li><a href="#">Color wheel</a></li>
+                        <li><a href="#">Support</a></li>
+                        <li><a href="#">Developers</a></li>
+                        <li><a href="#">Resource library</a></li>
+                    </ul>
+
+                </div>
+
+            </div>
+
+
+            <!-- RODAPÉ INFERIOR -->
+
+            <div class="footer-bottom">
+
+                <div>
+
+                    <div class="footer-logo">
+                        FENIX
+                    </div>
+
+                    <p class="copyright">
+                        © 2025 FENIX. Todos os direitos reservados.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- JAVASCRIPT DO QUESTIONÁRIO -->
+
+    <script src="./Scripts/quest.js"></script>
+
+</body>
+
+</html>
