@@ -1,0 +1,297 @@
+/* RESET & BASE STYLES */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #0c0c0c 0%, #1a1a1a 100%);
+      color: #ffffff;
+      line-height: 1.6;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* HERO SECTION */
+    .hero {
+      padding: 180px 0 100px;
+      background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), 
+                  url('../FIREImgs/Backk.jpg') center/cover no-repeat;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle at 50% 50%, transparent 0%, rgba(0, 0, 0, 0.9) 100%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .hero-title {
+      font-size: 3.5rem;
+      font-weight: 700;
+      background: linear-gradient(45deg, #fff 30%, #a70e08 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    .hero-subtitle {
+      font-size: 1.25rem;
+      color: rgba(255, 255, 255, 0.8);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* PLANS SECTION */
+    .plans-section {
+      padding: 100px 0;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: #ffffff;
+    }
+
+    .section-subtitle {
+      font-size: 1.125rem;
+      color: rgba(255, 255, 255, 0.7);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .plans-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-bottom: 80px;
+    }
+
+    .plan-card {
+      background: linear-gradient(145deg, rgba(30, 30, 30, 0.8), rgba(20, 20, 20, 0.9));
+      border-radius: 20px;
+      padding: 2.5rem;
+      position: relative;
+      transition: all 0.4s ease;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+    }
+
+    .plan-card:hover {
+      transform: translateY(-15px);
+      border-color: rgba(167, 14, 8, 0.3);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .plan-card.featured {
+      border: 2px solid #a70e08;
+      transform: scale(1.05);
+      margin-top: -20px;
+      margin-bottom: -20px;
+      z-index: 2;
+    }
+
+    .plan-card.featured:hover {
+      transform: scale(1.05) translateY(-15px);
+    }
+
+    .plan-badge {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 0.5rem 1.5rem;
+      border-radius: 20px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .bronze .plan-badge {
+      background: linear-gradient(45deg, #CD7F32, #E3B23C);
+      color: #000;
+    }
+
+    .silver .plan-badge {
+      background: linear-gradient(45deg, #C0C0C0, #E8E8E8);
+      color: #000;
+    }
+
+    .gold .plan-badge {
+      background: linear-gradient(45deg, #FFD700, #FFF8DC);
+      color: #000;
+    }
+
+    .plan-header {
+      text-align: center;
+      margin-bottom: 2rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .plan-name {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .plan-price {
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      gap: 0.25rem;
+    }
+
+    .currency {
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+
+    .price {
+      font-size: 3.5rem;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .period {
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    .plan-features {
+      list-style: none;
+      margin-bottom: 2.5rem;
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .feature-item:last-child {
+      border-bottom: none;
+    }
+
+    .feature-icon {
+      width: 20px;
+      text-align: center;
+    }
+
+    .feature-item:not(.disabled) .feature-icon {
+      color: #a70e08;
+    }
+
+    .feature-item.disabled {
+      color: rgba(255, 255, 255, 0.3);
+    }
+
+    .feature-item.disabled .feature-icon {
+      color: rgba(255, 255, 255, 0.3);
+    }
+
+    .plan-btn {
+      width: 100%;
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 12px;
+      font-size: 1.125rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .bronze-btn {
+      background: linear-gradient(45deg, #CD7F32, #E3B23C);
+      color: #000;
+    }
+
+    .silver-btn {
+      background: linear-gradient(45deg, #a70e08, #f90800);
+      color: white;
+    }
+
+    .gold-btn {
+      background: linear-gradient(45deg, #FFD700, #FFA500);
+      color: #000;
+    }
+
+    .plan-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    /* FAQ SECTION */
+    .faq-section {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .faq-title {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 3rem;
+      color: #ffffff;
+    }
+
+    .faq-grid {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .faq-item {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 15px;
+      padding: 1.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .faq-item:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateX(10px);
+    }
+
+    .faq-question {
+      font-size: 1.125rem;
+      color: #a70e08;
+      margin-bottom: 0.5rem;
+    }
+
+    .faq-answer {
+      color: rgba(255, 255, 255, 0.7);
+    }

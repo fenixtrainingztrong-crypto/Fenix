@@ -1,0 +1,21 @@
+FENIX TRAINING - CONFIGURACAO DO PAINEL ADMINISTRATIVO
+
+1. Faça uma cópia de segurança do projeto e do banco antes de alterar o schema.
+2. No Supabase, abra SQL Editor e execute Banco/AdminSecurity.sql.
+3. Confira se a tabela public.clientes possui as colunas nome, username, cpf, nascdate, email e role. O script pressupõe que nascdate é do tipo date.
+4. O script adiciona auth_user_id e cria automaticamente o perfil em clientes quando um usuário é cadastrado no Supabase Auth. A senha não é armazenada em clientes.
+5. Cadastros antigos são vinculados ao Auth pelo e-mail durante a migração. Verifique se os e-mails correspondem.
+6. Promova o primeiro administrador manualmente no SQL Editor, substituindo pelo e-mail correto:
+
+   UPDATE public.clientes SET role = 'adm' WHERE lower(email) = lower('SEU_EMAIL');
+
+7. Entre pela página Login.html com esse e-mail. O login consulta o perfil ligado ao auth_user_id e redireciona admins para Admin.html.
+8. Admin.html executa Scripts/admin.js, que valida sessão e role antes de exibir o painel. As operações também são protegidas por RLS no banco.
+
+IMPORTANTE
+- O login desta versão utiliza e-mail e senha. A busca pública de e-mail por username foi removida para não expor e-mails via tabela clientes.
+- A exclusão de um cliente pelo painel exclui o registro em public.clientes, mas NÃO exclui a conta correspondente em auth.users. A exclusão completa de contas Auth exige uma Edge Function/servidor com service_role; nunca coloque service_role no navegador.
+- O painel usa as colunas de treinos já referenciadas no código atual: nomeTreino, gastoCalorico, intensidade, tempoMinutos e regiao.
+- O SQL pressupõe que public.clientes.nascdate existe e é date. Se o nome real da coluna for diferente (por exemplo, nascDate com maiúsculas e aspas), ajuste a função fenix_criar_cliente antes de executar.
+- Após confirmar que nenhuma parte do projeto utiliza clientes.password, remova a coluna antiga com: ALTER TABLE public.clientes DROP COLUMN IF EXISTS password;
+- Nunca exponha a chave service_role no HTML, JavaScript ou repositório GitHub. A chave publishable/anon pode ficar no frontend desde que RLS esteja corretamente configurado.
