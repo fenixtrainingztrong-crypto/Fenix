@@ -3,25 +3,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const progress = document.querySelector(".loading-progress");
     const mensagem = document.querySelector(".loading-content p");
-    const porcentagem = document.querySelector(".loading-content span");
+    const status = document.querySelector(".loading-status");
+
+    if (!progress || !mensagem || !status) {
+        console.error("Elementos da tela de carregamento não encontrados.");
+        return;
+    }
 
     let valor = 0;
 
     const carregamento = setInterval(() => {
 
-        valor += 1;
+        valor++;
 
         progress.style.width = valor + "%";
-
-        porcentagem.textContent = valor + "%";
+        status.textContent = valor + "%";
 
         if (valor >= 100) {
 
             clearInterval(carregamento);
 
             mensagem.textContent = "Seu treino está pronto!";
-
-            porcentagem.textContent = "Carregamento concluído.";
+            status.textContent = "Carregamento concluído.";
 
         }
 
