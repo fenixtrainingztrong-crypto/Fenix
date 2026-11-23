@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", () => {
 
     const progress = document.querySelector(".loading-progress");
@@ -13,19 +12,21 @@ document.addEventListener("DOMContentLoaded", () => {
     let valor = 0;
 
     const carregamento = setInterval(() => {
-    valor++;
+        valor++;
 
-            progress.style.width = valor + "%";
-             status.textContent = valor + "%";
+        progress.style.width = valor + "%";
+        status.textContent = valor + "%";
 
         if (valor >= 100) {
-
             clearInterval(carregamento);
 
             mensagem.textContent = "Seu treino está pronto!";
             status.textContent = "Carregamento concluído.";
 
+            setTimeout(() => {
+                window.location.replace("./Treino.html");
+            }, 800);
         }
 
     }, 50);
-    });
+});
