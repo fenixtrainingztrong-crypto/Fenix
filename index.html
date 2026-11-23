@@ -1,282 +1,169 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Treino Bronze</title>
+  <title>FENIX</title>
   <link rel="icon" type="image" href="./FIREImgs/Fenixic.png">
-  <link rel="stylesheet" href="./EstiloFENIX/Treino.css">
+  <link rel="stylesheet" href="./EstiloFENIX/Style.css">
   <link rel="stylesheet" href="./EstiloFENIX/Essencial.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@800;900&display=swap"
+    rel="stylesheet">
   <script src="https://kit.fontawesome.com/751e327304.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 </head>
 
 <body>
-  <!-- HEADER -->
+
   <header>
     <a href="index.html">
       <img src="./FIREImgs/Fenix.png" alt="Fenix Logo" width="100">
-      </a>
+    </a>
     <nav>
       <a class="Contact" href="Contact.html">Fale Conosco</a>
-      <a class="Userr"><i class="fas fa-user"></i> <span id="header-user-name">usuário</span></a>
+      <a class="Register" href="Register.html">Registrar</a>
+      <a class="Entrar" href="Login.html">Entrar</a>
     </nav>
   </header>
 
-  <!-- CONTEÚDO PRINCIPAL -->
-  <main class="treinos-container">
-    <div class="page-header">
-      <h1><i class="fas fa-dumbbell"></i> Treinos - Nível Bronze</h1>
-      <p>Planos de treinamento para iniciantes. Foco em fundamentos.</p>
-    </div>
+  <!-- HERO SECTION -->
+  <section class="hero-section">
+    <div class="hero-overlay"></div>
+    <div class="hero-container">
+      <div class="hero-content animate__animated animate__fadeInLeft">
+        <div class="hero-badge">TRANSFORME SUA VIDA</div>
+        <h1 class="hero-title">
+          Tenha <span class="text-gradient">controle</span> sobre o seu corpo!
+        </h1>
+        <p class="hero-description">
+          A <strong>Fenix</strong> oferece treinos personalizados com IA, acompanhamento profissional e uma plataforma
+          interativa projetada para você alcançar sua melhor versão e superar seus limites <strong>todos os
+            dias</strong>.
+        </p>
 
-    <!-- USUÁRIO -->
-    <div class="user-card">
-      <h3><i class="fas fa-user"></i> Olá, <span id="welcome-name">usuário</span></h3>
-      <div class="user-tags">
-        <span class="badge bronze">Nível Bronze</span>
-        <span class="status">Status: Ativo</span>
-        <button class="btn-upgrade-small" onclick="showUpgradeModal()">
-          <i class="fas fa-arrow-up"></i> Upgrade
-        </button>
-      </div>
-    </div>
-
-    <!-- BANNER DE UPGRADE -->
-    <div class="upgrade-banner">
-      <h3><i class="fas fa-crown"></i> Eleve Seu Treino</h3>
-      <p>Desbloqueie mais recursos com nossos planos premium</p>
-      <div class="upgrade-buttons">
-        <button class="btn-upgrade silver" onclick="showUpgradeModal('prata')">
-          <i class="fas fa-arrow-up"></i> Prata - R$ 29,90/mês
-        </button>
-        <button class="btn-upgrade gold" onclick="showUpgradeModal('ouro')">
-          <i class="fas fa-crown"></i> Ouro - R$ 49,90/mês
-        </button>
-      </div>
-    </div>
-
-    <!-- TREINOS -->
-    <section class="training-section">
-      <h2><i class="fas fa-star"></i> Treinos Específicos</h2>
-      <p>Rotinas completas com foco em grupos musculares</p>
-      
-      <div class="special-grid">
-        <div class="special-item">
-          <img src="./FIREImgs/Costas + Bíceps.png" alt="Costas + Bíceps" class="exercise-img">
-          <h3>Costas + Bíceps</h3>
-          <p>Combinação costas e bíceps</p>
+        <div class="hero-stats">
+          <div class="stat-item">
+            <span class="stat-number">777</span>
+            <span class="stat-label">Alunos Transformados</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">100%</span>
+            <span class="stat-label">% de Satisfação</span>
+          </div>
         </div>
-        
-        <div class="special-item">
-          <img src="./FIREImgs/Peito + Tríceps + Abdômen.png" alt="Peito + Tríceps + Abdômen" class="exercise-img">
-          <h3>Peito + Tríceps + Abdômen</h3>
-          <p>Combinação superior completa</p>
-        </div>
-        
-        <div class="special-item">
-          <img src="./FIREImgs/Treino grande.png" alt="Pernas + Glúteo + Abdômen" class="exercise-img">
-          <h3>Pernas + Glúteo + Abdômen</h3>
-          <p>Combinação inferior completa</p>
+
+        <div class="hero-cta">
+          <button class="btn btn-primary btn-hero" id="venha">
+            <span>Comece Sua Jornada</span>
+            <i class="fas fa-arrow-right"></i>
+          </button>
         </div>
       </div>
-    </section>
-  </main>
 
-  <!-- MODAL DE UPGRADE -->
-  <div id="upgradeModal" class="modal">
-    <div class="modal-content">
-      <span class="close-modal" onclick="closeUpgradeModal()">&times;</span>
-      <h2 id="modalTitle">Escolha seu Plano</h2>
-      
-      <div class="plans-container">
-        <!-- Plano Bronze -->
-        <div class="plan-card bronze">
-          <div class="plan-header">
-            <h3>BÁSICO</h3>
-            <div class="plan-price">Grátis</div>
-          </div>
-          <ul class="plan-features">
-            <li><i class="fas fa-check"></i> Anúncios ativados</li>
-            <li><i class="fas fa-check"></i> Planilha de treino grátis</li>
-            <li><i class="fas fa-check"></i> Treinos pré-definidos</li>
-            <li><i class="fas fa-x"></i> IA integrada</li>
-            <li><i class="fas fa-x"></i> Suporte personalizado</li>
-          </ul>
-          <div class="plan-footer">
-            <span class="current-plan">Plano Atual</span>
-          </div>
-        </div>
-
-        <!-- Plano Prata -->
-        <div class="plan-card silver">
-          <div class="plan-header">
-            <h3>POPULAR</h3>
-            <div class="plan-price">
-              R$ 29,90<span>/mês</span>
-            </div>
-          </div>
-          <ul class="plan-features">
-            <li><i class="fas fa-check"></i> Sem anúncios</li>
-            <li><i class="fas fa-check"></i> Planilha de treino</li>
-            <li><i class="fas fa-check"></i> IA integrada</li>
-            <li><i class="fas fa-check"></i> Acesso VIP</li>
-            <li><i class="fas fa-check"></i> Treinos personalizados</li>
-          </ul>
-          <div class="plan-footer">
-            <button class="btn-select-plan" onclick="selectPlan('prata')">Escolher Plano</button>
-          </div>
-        </div>
-
-        <!-- Plano Ouro -->
-        <div class="plan-card gold">
-          <div class="plan-header">
-            <h3>PREMIUM</h3>
-            <div class="plan-price">
-              R$ 49,90<span>/mês</span>
-            </div>
-          </div>
-          <ul class="plan-features">
-            <li><i class="fas fa-check"></i> Sem anúncios</li>
-            <li><i class="fas fa-check"></i> Planilha personalizada</li>
-            <li><i class="fas fa-check"></i> Auxílio profissional</li>
-            <li><i class="fas fa-check"></i> IA avançada</li>
-            <li><i class="fas fa-check"></i> Suporte 24/7</li>
-          </ul>
-          <div class="plan-footer">
-            <button class="btn-select-plan" onclick="selectPlan('ouro')">Escolher Plano</button>
-          </div>
+      <div class="hero-image animate__animated animate__fadeInRight">
+        <div class="image-container">
+          <img src="./FIREImgs/renatoc.jpg" alt="RenatoCADIADI" class="main-image" loading="lazy">
         </div>
       </div>
     </div>
-  </div>
+  </section>
 
+  <!-- FEATURES SECTION -->
+  <section id="features" class="features-section">
+    <div class="section-header">
+      <h2 class="section-title">Por que escolher a <span class="text-gradient">Fenix</span>?</h2>
+      <p class="section-subtitle">Tecnologia de ponta combinada com expertise em fitness para maximizar seus resultados
+      </p>
+    </div>
+
+    <div class="features-extra">
+      <div class="extra-card">
+        <i class="fas fa-users"></i>
+        <h4>Comunidade</h4>
+        <p>777 membros ativos</p>
+      </div>
+      <div class="extra-card">
+        <i class="fas fa-award"></i>
+        <h4>Certificação</h4>
+        <p>Profissionais qualificados</p>
+      </div>
+      <div class="extra-card">
+        <i class="fas fa-sync-alt"></i>
+        <h4>Atualizações</h4>
+        <p>Conteúdo semanal novo</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER (Manter igual) -->
   <footer class="fenix-footer">
-        <div class="footer-container">
-            <div class="footer-columns">
-                <div class="footer-column">
-                    <img src="./FIREImgs/Fenix.png" alt="Fenix Logo" width="150" style="margin-bottom: 20px;">
-                </div>
-                <div class="footer-column">
-                    <h3>Use cases</h3>
-                    <ul>
-                        <li><a href="#">UI design</a></li>
-                        <li><a href="#">UX design</a></li>
-                        <li><a href="#">Wireframing</a></li>
-                        <li><a href="#">Diagramming</a></li>
-                        <li><a href="#">Brainstorming</a></li>
-                        <li><a href="#">Online whiteboard</a></li>
-                        <li><a href="#">Team collaboration</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Explore</h3>
-                    <ul>
-                        <li><a href="#">Design</a></li>
-                        <li><a href="#">Prototyping</a></li>
-                        <li><a href="#">Development features</a></li>
-                        <li><a href="#">Design systems</a></li>
-                        <li><a href="#">Collaboration features</a></li>
-                        <li><a href="#">Design process</a></li>
-                        <li><a href="#">FigJam</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Resources</h3>
-                    <ul>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">Best practices</a></li>
-                        <li><a href="#">Colors</a></li>
-                        <li><a href="#">Color wheel</a></li>
-                        <li><a href="#">Support</a></li>
-                        <li><a href="#">Developers</a></li>
-                        <li><a href="#">Resource library</a></li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <div>
-                    <div class="footer-logo">FENIX</div>
-                    <p class="copyright">© 2025 FENIX. Todos os direitos reservados.</p>
-                </div>
-                <div class="footer-social">
-                    <a href="https://www.instagram.com/feni.xtraining/" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
-                </div>
-            </div>
+    <!-- Manter o mesmo footer da página anterior -->
+    <div class="footer-container">
+      <div class="footer-columns">
+        <div class="footer-column">
+          <img src="./FIREImgs/Fenix.png" alt="Fenix Logo" width="150" style="margin-bottom: 20px;">
         </div>
-    </footer>
+        <div class="footer-column">
+          <h3>Use cases</h3>
+          <ul>
+            <li><a href="#">UI design</a></li>
+            <li><a href="#">UX design</a></li>
+            <li><a href="#">Wireframing</a></li>
+            <li><a href="#">Diagramming</a></li>
+            <li><a href="#">Brainstorming</a></li>
+            <li><a href="#">Online whiteboard</a></li>
+            <li><a href="#">Team collaboration</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h3>Explore</h3>
+          <ul>
+            <li><a href="#">Design</a></li>
+            <li><a href="#">Prototyping</a></li>
+            <li><a href="#">Development features</a></li>
+            <li><a href="#">Design systems</a></li>
+            <li><a href="#">Collaboration features</a></li>
+            <li><a href="#">Design process</a></li>
+            <li><a href="#">FigJam</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h3>Resources</h3>
+          <ul>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Best practices</a></li>
+            <li><a href="#">Colors</a></li>
+            <li><a href="#">Color wheel</a></li>
+            <li><a href="#">Support</a></li>
+            <li><a href="#">Developers</a></li>
+            <li><a href="#">Resource library</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          <div class="footer-logo">FENIX</div>
+          <p class="copyright">© 2025 FENIX. Todos os direitos reservados.</p>
+        </div>
+
+        <div class="footer-social">
+          <a href="https://www.instagram.com/feni.xtraining/" class="social-icon"><i
+              class="fa-brands fa-instagram"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
 
   <script>
-    let selectedPlan = '';
-    
-    function showUpgradeModal(plan = '') {
-      if (plan) selectedPlan = plan;
-      document.getElementById('upgradeModal').style.display = 'block';
-    }
-    
-    function closeUpgradeModal() {
-      document.getElementById('upgradeModal').style.display = 'none';
-      selectedPlan = '';
-    }
-    
-    function selectPlan(plan) {
-      const price = plan === 'prata' ? 'R$ 29,90' : 'R$ 49,90';
-      const planName = plan === 'prata' ? 'Prata' : 'Ouro';
-      
-      if (confirm(`Confirmar upgrade para plano ${planName} por ${price}/mês?`)) {
-        alert('Redirecionando para pagamento...');
-        closeUpgradeModal();
-      }
-    }
-    
-    // Fechar modal ao clicar fora
-    window.onclick = function(event) {
-      const modal = document.getElementById('upgradeModal');
-      if (event.target === modal) closeUpgradeModal();
-    }
-    
-    // Treinos clicáveis
-    document.querySelectorAll('.special-item').forEach(item => {
-      item.onclick = function() {
-        const name = this.querySelector('h3').textContent;
-        alert(`Iniciando treino: ${name}`);
-      }
-    });
+    const venha = document.getElementById('venha');
+    venha.addEventListener('click', () => { window.location.href='Register.html';});
   </script>
 
-  <script type="module">
-    import { supabase } from './Scripts/supabase-auth.js';
-
-    async function carregarNomeUsuario() {
-      const nomeElemento = document.getElementById('welcome-name');
-      const headerNomeElemento = document.getElementById('header-user-name');
-
-      const { data: { user }, error: authError } = await supabase.auth.getUser();
-
-      if (authError || !user) {
-        nomeElemento.textContent = 'usuário';
-        headerNomeElemento.textContent = 'usuário';
-        return;
-      }
-
-      const { data: cliente, error } = await supabase
-        .from('clientes')
-        .select('nome')
-        .eq('auth_user_id', user.id)
-        .maybeSingle();
-
-      if (error) {
-        console.error('Erro ao buscar o nome do usuário:', error);
-        nomeElemento.textContent = 'usuário';
-        headerNomeElemento.textContent = 'usuário';
-        return;
-      }
-
-      nomeElemento.textContent = cliente?.nome || user.user_metadata?.nome || 'usuário';
-      headerNomeElemento.textContent = cliente?.nome || user.user_metadata?.nome || 'usuário';
-    }
-
-    carregarNomeUsuario();
-  </script>
 </body>
+
 </html>

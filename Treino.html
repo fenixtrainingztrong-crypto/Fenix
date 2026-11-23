@@ -272,9 +272,8 @@
         return;
       }
 
-      const nome = cliente?.nome || user.user_metadata?.nome || 'usuário';
-      nomeElemento.textContent = nome;
-      headerNomeElemento.textContent = nome;
+      nomeElemento.textContent = cliente?.nome || user.user_metadata?.nome || 'usuário';
+      headerNomeElemento.textContent = cliente?.nome || user.user_metadata?.nome || 'usuário';
     }
 
     carregarNomeUsuario();
