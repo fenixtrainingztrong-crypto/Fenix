@@ -18,7 +18,7 @@
       </a>
     <nav>
       <a class="Contact" href="Contact.html">Fale Conosco</a>
-      <a class="Userr"><i class="fas fa-user"></i> Murilo </a>
+      <a class="Userr"><i class="fas fa-user"></i> <span id="header-user-name">usuário</span></a>
     </nav>
   </header>
 
@@ -31,7 +31,7 @@
 
     <!-- USUÁRIO -->
     <div class="user-card">
-      <h3><i class="fas fa-user"></i> Olá Murilo</h3>
+      <h3><i class="fas fa-user"></i> Olá, <span id="welcome-name">usuário</span></h3>
       <div class="user-tags">
         <span class="badge bronze">Nível Bronze</span>
         <span class="status">Status: Ativo</span>
@@ -242,6 +242,42 @@
         alert(`Iniciando treino: ${name}`);
       }
     });
+  </script>
+
+  <script type="module">
+    import { supabase } from './Scripts/supabase-auth.js';
+
+    async function carregarNomeUsuario() {
+      const nomeElemento = document.getElementById('welcome-name');
+      const headerNomeElemento = document.getElementById('header-user-name');
+
+      const { data: { user }, error: authError } = await supabase.auth.getUser();
+
+      if (authError || !user) {
+        nomeElemento.textContent = 'usuário';
+        headerNomeElemento.textContent = 'usuário';
+        return;
+      }
+
+      const { data: cliente, error } = await supabase
+        .from('clientes')
+        .select('nome')
+        .eq('auth_user_id', user.id)
+        .maybeSingle();
+
+      if (error) {
+        console.error('Erro ao buscar o nome do usuário:', error);
+        nomeElemento.textContent = 'usuário';
+        headerNomeElemento.textContent = 'usuário';
+        return;
+      }
+
+      const nome = cliente?.nome || user.user_metadata?.nome || 'usuário';
+      nomeElemento.textContent = nome;
+      headerNomeElemento.textContent = nome;
+    }
+
+    carregarNomeUsuario();
   </script>
 </body>
 </html>
