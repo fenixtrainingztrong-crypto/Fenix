@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+    document.body.classList.add("loading-page");
 
     const progress = document.querySelector(".loading-progress");
     const mensagem = document.querySelector(".loading-content p");
@@ -24,7 +25,11 @@ document.addEventListener("DOMContentLoaded", () => {
             status.textContent = "Carregamento concluído.";
 
             setTimeout(() => {
-                window.location.replace("./Treino.html");
+                document.body.classList.add("page-leaving");
+
+                setTimeout(() => {
+                    window.location.replace("./Treino.html");
+                }, 200);
             }, 800);
         }
 

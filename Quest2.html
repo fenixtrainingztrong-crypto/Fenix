@@ -13,37 +13,48 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
         rel="stylesheet"
     >
-    <link rel="stylesheet" href="./EstiloFENIX/Quest.css">
     <link rel="stylesheet" href="./EstiloFENIX/Essencial.css">
+    <link rel="stylesheet" href="./EstiloFENIX/Quest.css">
     <script
         src="https://kit.fontawesome.com/751e327304.js"
         crossorigin="anonymous">
     </script>
 </head>
 
-<body>
+<body class="quest-page quest2-page">
 
-    <header class="fenix-header">
+    <!-- =====================================
+         HEADER
+    ====================================== -->
 
-    <a href="index.html" class="brand">
-        <img src="./FIREImgs/Fenix.png" alt="Fenix Logo">
-    </a>
-
-    <nav class="header-nav">
-        <a class="Contact" href="Contact.html">
-            Fale Conosco
+    <header>
+        <a href="index.html" class="brand">
+            <img
+                src="./FIREImgs/Fenix.png"
+                alt="Fenix Logo"
+                width="100"
+            >
         </a>
 
-        <a class="Register" href="Register.html">
-            Registrar
-        </a>
+        <nav>
+            <a class="Contact" href="Contact.html">
+                Fale Conosco
+            </a>
 
-        <a class="Entrar" href="Login.html">
-            Entrar
-        </a>
-    </nav>
+            <a class="Register" href="Register.html">
+                Registrar
+            </a>
 
+            <a class="Entrar" href="Login.html">
+                Entrar
+            </a>
+        </nav>
     </header>
+
+
+    <!-- =====================================
+         CONTEÚDO PRINCIPAL
+    ====================================== -->
 
     <main class="questionnaire-main">
 
@@ -149,17 +160,28 @@
 
             <!-- MENSAGEM -->
 
-            <p id="form-message" class="form-message"></p>
+            <p
+                id="form-message"
+                class="form-message"
+                role="status"
+                aria-live="polite">
+            </p>
 
 
             <!-- BOTÕES -->
 
             <div class="form-actions">
 
-                <a href="Quest.html" class="back-button">
+                <button
+                    type="button"
+                    class="back-button"
+                    id="back-button">
+
                     <i class="fa-solid fa-chevron-left"></i>
+
                     <span>Voltar</span>
-                </a>
+
+                </button>
 
                 <button type="submit" class="next-button">
                     <span>Seguir</span>
