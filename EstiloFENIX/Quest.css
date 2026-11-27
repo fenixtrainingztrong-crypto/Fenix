@@ -1,10 +1,4 @@
 
-/* ==========================================
-   FENIX TRAINING - QUESTIONÁRIO
-   Tema escuro, vermelho e responsivo
-========================================== */
-
-/* RESET GERAL */
 
 * {
     margin: 0;
@@ -70,9 +64,6 @@ body {
     }
 }
 
-/* ==========================================
-   CABEÇALHO
-========================================== */
 
 header {
     width: 100%;
@@ -160,9 +151,6 @@ header nav {
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
-/* ==========================================
-   ÁREA PRINCIPAL
-========================================== */
 
 .questionnaire-main {
     flex: 1;
@@ -182,7 +170,6 @@ header nav {
     padding-bottom: 100px;
 }
 
-/* CARTÃO DO QUESTIONÁRIO */
 
 .questionnaire-card {
     width: 100%;
@@ -218,9 +205,6 @@ header nav {
     border-bottom: 2px solid #414141;
 }
 
-/* ==========================================
-   GÊNERO
-========================================== */
 
 .gender-field {
     min-width: 0;
@@ -263,7 +247,6 @@ header nav {
     cursor: pointer;
 }
 
-/* Oculta o rádio padrão, mantendo acessibilidade */
 
 .gender-option input {
     position: absolute;
@@ -303,9 +286,6 @@ header nav {
     outline-offset: 3px;
 }
 
-/* ==========================================
-   PERGUNTAS (ETAPA 2)
-========================================== */
 
 .question-field {
     min-width: 0;
@@ -382,10 +362,6 @@ header nav {
     outline-offset: 3px;
 }
 
-/* ==========================================
-   SEPARADORES
-========================================== */
-
 .field-divider {
     width: 100%;
     height: 1px;
@@ -401,9 +377,7 @@ header nav {
     margin-bottom: 20px;
 }
 
-/* ==========================================
-   CAMPOS PESSOAIS
-========================================== */
+
 
 .personal-fields {
     display: grid;
@@ -475,9 +449,6 @@ header nav {
     grid-column: 1;
 }
 
-/* ==========================================
-   OBJETIVO
-========================================== */
 
 .objective-field {
     min-width: 0;
@@ -517,9 +488,6 @@ header nav {
     color: #ffffff;
 }
 
-/* ==========================================
-   MENSAGENS DO FORMULÁRIO
-========================================== */
 
 .form-message {
     margin: 0;
@@ -533,9 +501,6 @@ header nav {
     margin-top: 10px;
 }
 
-/* ==========================================
-   BOTÕES VOLTAR E SEGUIR
-========================================== */
 
 .form-actions {
     display: flex;
@@ -597,10 +562,6 @@ header nav {
     outline: 2px solid var(--primary-orange);
     outline-offset: 3px;
 }
-
-/* ==========================================
-   RODAPÉ
-========================================== */
 
 .fenix-footer {
     flex-shrink: 0;
@@ -754,9 +715,7 @@ header nav {
     transform: translateY(-3px);
 }
 
-/* ==========================================
-   TABLETS
-========================================== */
+
 
 @media (max-width: 768px) {
     header {
@@ -806,10 +765,6 @@ header nav {
         font-size: 12px;
     }
 }
-
-/* ==========================================
-   CELULARES
-========================================== */
 
 @media (max-width: 500px) {
     header {
@@ -972,9 +927,7 @@ header nav {
     }
 }
 
-/* ==========================================
-   CELULARES PEQUENOS
-========================================== */
+
 
 @media (max-width: 360px) {
     header .brand img {
