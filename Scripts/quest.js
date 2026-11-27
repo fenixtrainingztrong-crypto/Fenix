@@ -53,4 +53,9 @@ document.addEventListener('DOMContentLoaded', () => {
       window.location.href = 'Loading.html';
     });
   }
+
+  if (sessionStorage.getItem('fenixTreinoAtivo') === 'true') {
+    window.location.replace('Treino.html');
+    return;
+  }
 });
