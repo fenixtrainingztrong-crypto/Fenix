@@ -10,6 +10,11 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
     }
 
+    if (sessionStorage.getItem('fenixTreinoAtivo') === 'true') {
+        window.location.replace("./Treino.html");
+        return;
+    }
+
     let valor = 0;
 
     const carregamento = setInterval(() => {
@@ -28,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 document.body.classList.add("page-leaving");
 
                 setTimeout(() => {
-                    window.location.replace("./Treino.html");
+                    window.location.replace("./Planos.html");
                 }, 200);
             }, 800);
         }
