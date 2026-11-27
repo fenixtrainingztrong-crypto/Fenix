@@ -14,6 +14,29 @@
       overflow-x: hidden;
     }
 
+    body.plans-page {
+      opacity: 0;
+      animation: plansPageEnter 0.45s ease forwards;
+      transition: opacity 0.35s ease, transform 0.35s ease;
+    }
+
+    body.plans-page.page-leaving {
+      opacity: 0;
+      transform: translateY(-18px) scale(0.985);
+      pointer-events: none;
+    }
+
+    @keyframes plansPageEnter {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
     .container {
       max-width: 1200px;
       margin: 0 auto;
