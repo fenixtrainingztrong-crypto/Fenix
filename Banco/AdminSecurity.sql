@@ -120,17 +120,48 @@ CREATE POLICY "admin_excluir_treinos"
 ON public.treinos FOR DELETE TO authenticated
 USING (public.is_fenix_admin());
 
--- IMPORTANTE:
--- Depois de confirmar que o sistema nao usa mais clientes.password,
--- remova essa coluna antiga. Nunca armazene senhas em texto puro.
--- ALTER TABLE public.clientes DROP COLUMN IF EXISTS password;
-
-
--- 7) Consulte as politicas existentes. Politicas permissivas antigas podem
--- ampliar o acesso porque politicas RLS permissivas sao combinadas com OR.
--- Remova/revise qualquer politica antiga que permita acesso publico indevido.
 SELECT schemaname, tablename, policyname, roles, cmd, qual, with_check
 FROM pg_policies
 WHERE schemaname = 'public'
   AND tablename IN ('clientes', 'treinos')
 ORDER BY tablename, policyname;
+
+-- 8) Lista todos os usuários do sistema (ativos e inativos) para o painel.
+-- A função une auth.users com clientes, incluindo perfis antigos sem conta vinculada.
+CREATE OR REPLACE FUNCTION public.listar_usuarios_fenix()
+RETURNS TABLE (
+  perfil_id text,
+  auth_user_id uuid,
+  nome text,
+  email text,
+  role text,
+  status text,
+  ultimo_acesso timestamptz
+)
+LANGUAGE sql
+STABLE
+SECURITY DEFINER
+SET search_path = public
+AS $$
+  SELECT
+    c.id::text AS perfil_id,
+    u.id AS auth_user_id,
+    COALESCE(NULLIF(c.nome, ''), NULLIF(u.raw_user_meta_data ->> 'nome', ''), '') AS nome,
+    COALESCE(NULLIF(u.email, ''), NULLIF(c.email, ''), '') AS email,
+    COALESCE(c.role, 'user') AS role,
+    CASE
+      WHEN u.id IS NULL THEN 'Inativo'
+      WHEN u.deleted_at IS NOT NULL THEN 'Inativo'
+      WHEN u.banned_until IS NOT NULL AND u.banned_until > now() THEN 'Inativo'
+      WHEN u.email_confirmed_at IS NULL THEN 'Pendente'
+      ELSE 'Ativo'
+    END AS status,
+    u.last_sign_in_at AS ultimo_acesso
+  FROM auth.users AS u
+  FULL JOIN public.clientes AS c ON c.auth_user_id = u.id
+  WHERE public.is_fenix_admin()
+  ORDER BY COALESCE(u.last_sign_in_at, '1970-01-01'::timestamptz) DESC;
+$$;
+
+REVOKE ALL ON FUNCTION public.listar_usuarios_fenix() FROM PUBLIC;
+GRANT EXECUTE ON FUNCTION public.listar_usuarios_fenix() TO authenticated;
