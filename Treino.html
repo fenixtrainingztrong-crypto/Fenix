@@ -11,7 +11,7 @@
 </head>
 
 <body>
-  <!-- HEADER -->
+
   <header>
     <a href="index.html">
       <img src="./FIREImgs/Fenix.png" alt="Fenix Logo" width="100">
@@ -22,14 +22,14 @@
     </nav>
   </header>
 
-  <!-- CONTEÚDO PRINCIPAL -->
+
   <main class="treinos-container">
     <div class="page-header">
       <h1><i class="fas fa-dumbbell"></i> Treinos - Nível Bronze</h1>
       <p>Planos de treinamento para iniciantes. Foco em fundamentos.</p>
     </div>
 
-    <!-- USUÁRIO -->
+  
     <div class="user-card">
       <h3><i class="fas fa-user"></i> Olá, <span id="welcome-name">usuário</span></h3>
       <div class="user-tags">
@@ -41,7 +41,7 @@
       </div>
     </div>
 
-    <!-- BANNER DE UPGRADE -->
+
     <div class="upgrade-banner">
       <h3><i class="fas fa-crown"></i> Eleve Seu Treino</h3>
       <p>Desbloqueie mais recursos com nossos planos premium</p>
@@ -55,7 +55,7 @@
       </div>
     </div>
 
-    <!-- TREINOS -->
+
     <section class="training-section">
       <h2><i class="fas fa-star"></i> Treinos Específicos</h2>
       <p>Rotinas completas com foco em grupos musculares</p>
@@ -82,7 +82,7 @@
     </section>
   </main>
 
-  <!-- MODAL DE UPGRADE -->
+
   <div id="upgradeModal" class="modal">
     <div class="modal-content">
       <span class="close-modal" onclick="closeUpgradeModal()">&times;</span>
@@ -229,18 +229,28 @@
       }
     }
     
-    // Fechar modal ao clicar fora
+
     window.onclick = function(event) {
       const modal = document.getElementById('upgradeModal');
       if (event.target === modal) closeUpgradeModal();
     }
     
-    // Treinos clicáveis
+
     document.querySelectorAll('.special-item').forEach(item => {
       item.onclick = function() {
         const name = this.querySelector('h3').textContent;
         alert(`Iniciando treino: ${name}`);
       }
+    });
+
+    sessionStorage.setItem('fenixTreinoAtivo', 'true');
+
+    history.replaceState({ tela: 'treino' }, '', 'Treino.html');
+    history.pushState({ tela: 'treino' }, '', 'Treino.html');
+
+    window.addEventListener('popstate', function () {
+      history.pushState({ tela: 'treino' }, '', 'Treino.html');
+      window.location.replace('Treino.html');
     });
   </script>
 
