@@ -46,13 +46,31 @@ async function protegerPainel() {
 }
 
 async function carregarUsuarios() {
-  const { data, error } = await supabase
-    .from('clientes')
-    .select('id, auth_user_id, nome, email, role')
-    .order('id', { ascending: true });
+  const { data, error } = await supabase.rpc('listar_usuarios_fenix');
 
-  if (error) throw error;
-  usuarios = data || [];
+  if (error) {
+    // Compatibilidade caso a função SQL ainda não tenha sido aplicada.
+    const fallback = await supabase
+      .from('clientes')
+      .select('id, auth_user_id, nome, email, role')
+      .order('id', { ascending: true });
+    if (fallback.error) throw fallback.error;
+    usuarios = (fallback.data || []).map((u) => ({
+      ...u,
+      perfil_id: String(u.id),
+      status: 'Ativo'
+    }));
+  } else {
+    usuarios = (data || []).map((u) => ({
+      ...u,
+      id: u.perfil_id,
+      nome: u.nome || '-',
+      email: u.email || '-',
+      role: u.role || 'user',
+      status: u.status || 'Ativo'
+    }));
+  }
+
   renderUsuarios();
 }
 
@@ -71,20 +89,24 @@ function renderUsuarios() {
   const filtro = roleFilter.value;
   const lista = filtro === 'all' ? usuarios : usuarios.filter((u) => u.role === filtro);
 
-  userTableBody.innerHTML = lista.length ? lista.map((u) => `
+  userTableBody.innerHTML = lista.length ? lista.map((u) => {
+    const temPerfil = u.perfil_id !== null && u.perfil_id !== undefined;
+    const classeStatus = u.status === 'Ativo' ? 'adm' : u.status === 'Pendente' ? 'user' : 'danger';
+    return `
     <tr>
       <td><div class="user-name">${escapar(u.nome)}</div><div class="user-email">${escapar(u.email)}</div></td>
       <td><span class="badge ${u.role === 'adm' ? 'adm' : 'user'}">${u.role === 'adm' ? 'Admin' : 'User'}</span></td>
-      <td>Ativo</td>
+      <td><span class="badge ${classeStatus}">${escapar(u.status)}</span></td>
       <td><div class="action-group">
-        <button class="btn btn-secondary" data-action="toggle-role" data-id="${Number(u.id)}">${u.role === 'adm' ? 'Remover adm' : 'Promover adm'}</button>
-        <button class="btn btn-danger" data-action="delete-user" data-id="${Number(u.id)}">Excluir</button>
+        ${temPerfil ? `<button class="btn btn-secondary" data-action="toggle-role" data-id="${escapar(u.id)}">${u.role === 'adm' ? 'Remover adm' : 'Promover adm'}</button>
+        <button class="btn btn-danger" data-action="delete-user" data-id="${escapar(u.id)}">Excluir</button>` : '<span class="badge user">Só conta Auth</span>'}
       </div></td>
-    </tr>`).join('') : '<tr><td colspan="4"><div class="empty-state">Nenhum usuário encontrado.</div></td></tr>';
+    </tr>`;
+  }).join('') : '<tr><td colspan="4"><div class="empty-state">Nenhum usuário encontrado.</div></td></tr>';
 
   $('totalUsers').textContent = usuarios.length;
   $('totalAdmins').textContent = usuarios.filter((u) => u.role === 'adm').length;
-  $('totalUsersActive').textContent = usuarios.length;
+  $('totalUsersActive').textContent = usuarios.filter((u) => u.status === 'Ativo').length;
   $('userCountBadge').textContent = `${lista.length} usuários`;
 }
 
@@ -131,7 +153,7 @@ document.addEventListener('click', async (event) => {
   if (action === 'toggle-role') {
     const usuario = usuarios.find((u) => Number(u.id) === id);
     if (!usuario) return;
-    // Impede remover a propria permissao administrativa por este painel.
+
     const { data: { user } } = await supabase.auth.getUser();
     if (usuario.auth_user_id === user?.id && usuario.role === 'adm') {
       alert('Você não pode remover sua própria permissão de administrador.');
