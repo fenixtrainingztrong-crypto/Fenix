@@ -46,7 +46,7 @@
       <article class="stat-card">
         <span class="label">Usuários</span>
         <strong id="totalUsers">0</strong>
-        <small>cadastros ativos</small>
+        <small>todos os cadastros</small>
       </article>
       <article class="stat-card">
         <span class="label">Admins</span>
@@ -61,7 +61,7 @@
       <article class="stat-card">
         <span class="label">Ativos</span>
         <strong id="totalUsersActive">0</strong>
-        <small>status online</small>
+        <small>contas confirmadas</small>
       </article>
     </section>
 
@@ -111,11 +111,16 @@
           </div>
 
           <div class="field">
-            <label for="workoutLevel">Nível</label>
+            <label for="workoutLevel">Região</label>
             <select id="workoutLevel" name="workoutLevel">
-              <option value="Iniciante">Iniciante</option>
-              <option value="Intermediário">Intermediário</option>
-              <option value="Avançado">Avançado</option>
+              <option value="Braço">Braço</option>
+              <option value="Peito">Peito</option>
+              <option value="Costas">Costas</option>
+              <option value="Ombro">Ombro</option>
+              <option value="Perna">Perna</option>
+              <option value="Abdômen">Abdômen</option>
+              <option value="Glúteo">Glúteo</option>
+              <option value="Cardio">Cardio</option>
             </select>
           </div>
 
@@ -125,8 +130,8 @@
           </div>
 
           <div class="field">
-            <label for="workoutDescription">Descrição</label>
-            <textarea id="workoutDescription" name="workoutDescription" placeholder="Descreva o foco do treino..." required></textarea>
+            <label for="workoutDescription">Gasto calórico</label>
+            <textarea id="workoutDescription" name="workoutDescription" placeholder="Gasto calórico estimado..." required></textarea>
           </div>
 
           <button type="submit" class="btn btn-primary">Salvar treino</button>
